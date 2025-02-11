@@ -8,32 +8,28 @@ validateBtn.onclick = validate;
 clearBtn.onclick = backspace;
 resetBtn.onclick = resetAll;
 
-function validate(){
+function validate() {
     let phoneNumber = input.value;
 
     if(phoneNumber === "") {
         alert("Please insert a phone number")
     }else{
-        let nigerian = /^(\+234[-\s]?|0[-\s]?)[789][01]\d{1}[-\s]?\d{3}[-\s]?\d{4}$/;
+        let nigerian = /^(\+234[-\s]?|0[-\s]?)(([789][01]\d{1}[-\s]?)|([1][-\s]?))\d{3}[-\s]?\d{4}$/;
 
-        let ukNumber = /^(\+44[-\s]?|0044[-\s]?|0[-\s]?)[7]\d{3}[-\s]?\d{6}$/;
+        let ukNumber = /^(\+44[-\s]?|0044[-\s]?|0[-\s]?)([7]\d{3}[-\s]?|[12]\d{2}[-\s]?|[2]\d{1}[-\s])((\d{3}[-\s]\d{4}$)|(\d{6}$)|(\d{4}[-\s]\d{4}$))/;
 
-        let ausNumber = /^(\+61[-\s]?|0[-\s]?)[23478][-\s]?\d{4}[-\s]?\d{4}$/
+        let ausNumber = /^(\+61[-\s]?|0[-\s]?)(([23478][-\s]?)|([4]\d{2}[-\s]))((\d{4}[-\s]?\d{4}$)|(\d{3}[-\s]\d{3}$))/;
 
         if(nigerian.test(phoneNumber)){
             dispaly.textContent = `${phoneNumber} is a Nigerian Number`;
-        }
-        else if(ukNumber.test(phoneNumber)){
+        }else if(ukNumber.test(phoneNumber)){
             dispaly.textContent = `${phoneNumber} is a UK Number`;
-        }
-        else if(ausNumber.test(phoneNumber)){
+        }else if(ausNumber.test(phoneNumber)){
             dispaly.textContent = `${phoneNumber} is an Australian Number`;
-        }
-        else{
+        }else{
             dispaly.textContent = `${phoneNumber} is not a Nigerian / UK / Australian phone number`;
         }
     }
-
 }
 
 function backspace() {
@@ -51,6 +47,4 @@ function resetAll() {
             dispaly.textContent = "";
         }, 2000);
     }, 1000);
-
-   
 }
